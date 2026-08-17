@@ -104,7 +104,7 @@ Maps the 7 sorted ranks into a dense index range `0..50387` using a precomputed 
 ## Verification & Correctness
 
 * **Exhaustive Evaluation**: Validated across all $\binom{52}{7} = 133,784,560$ possible 7-card hand combinations with **[Henry Lee's PHEvaluator](https://github.com/HenryRLee/PokerHandEvaluator)**.
-* **Consistency**: Verified against `PokerHandEvaluator.jl` for complete hand rank equivalence across random paired hands.
+* **Consistency**: Verified against  **[PokerHandEvaluator.jl]([https://github.com/HenryRLee/PokerHandEvaluator](https://github.com/charleskawczynski/PokerHandEvaluator.jl))** for complete hand rank equivalence across random paired hands.
 
 ---
 
