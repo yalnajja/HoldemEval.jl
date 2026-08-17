@@ -44,6 +44,15 @@ jobs:
 
       - uses: julia-actions/julia-buildpkg@v1
 
+      # --- CUSTOM STEP: Override Combinatorics.jl Version ---
+      - name: Pin Combinatorics.jl version
+        if: matrix.combinatorics_version != 'latest'
+        shell: julia --color=yes {0}
+        run: |
+          using Pkg
+          Pkg.add(PackageSpec(name="Combinatorics", version="${{ matrix.combinatorics_version }}"))
+          Pkg.resolve()
+
       - uses: julia-actions/julia-runtest@v1
 
       - uses: julia-actions/julia-processcoverage@v1
