@@ -18,7 +18,7 @@
 
 ```julia
 using Pkg
-Pkg.add(url="https://github.com/your-username/HoldemEval.jl")
+Pkg.add(url="https://github.com/yalnajja/HoldemEval.jl")
 
 ```
 
