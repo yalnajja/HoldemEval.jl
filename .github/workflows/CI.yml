@@ -74,6 +74,6 @@ jobs:
         run: |
           using Pkg
           Pkg.add("Aqua")
+          Pkg.develop(PackageSpec(path=pwd()))
           using Aqua, HoldemEval
-          # Pass stale_deps=false if Aqua flags extra test dependencies
           Aqua.test_all(HoldemEval; stale_deps=false)
