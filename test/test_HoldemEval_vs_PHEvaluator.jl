@@ -36,10 +36,17 @@ Point at your compiled libpheval the same way as before:
 
 
 
+
+
 # # Adjust these include paths/module names to match your project layout.
-# include("PHEvaluatorWrapper.jl")
+
+include("PHEvaluatorWrapper.jl")
 # include("../src/HoldemEval.jl")
-# using .PHEvaluatorWrapper
+using .PHEvaluatorWrapper
+
+if haskey(ENV, "PHEVALUATOR_LIB") && isfile(ENV["PHEVALUATOR_LIB"])
+    PHEvaluatorWrapper.set_library!(ENV["PHEVALUATOR_LIB"])
+end
 # using .HoldemEval
 # already included in runtests.jl
 

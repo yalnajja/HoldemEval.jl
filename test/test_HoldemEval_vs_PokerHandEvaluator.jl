@@ -15,10 +15,10 @@
 # apples-to-apples comparison, since HoldemEval's evaluate7 is meant to be used
 # in a tight, bounds-check-free loop.
 
-using BenchmarkTools
-using Random
+# using BenchmarkTools
+# using Random
 using Printf
-using PlayingCards
+import PlayingCards
 using PokerHandEvaluator
 
 # ---------------------------------------------------------------------
@@ -29,7 +29,7 @@ using PokerHandEvaluator
 #         "same suit => same code" within a single evaluation call.
 # ---------------------------------------------------------------------
 @inline function pc_to_HoldemEval0(card)
-    r = high_value(card) - 2
+    r = PlayingCards.high_value(card) - 2
     c = string(card)[end]
     s = c == '♣' ? 0 : c == '♠' ? 1 : c == '♡' ? 2 : 3
     return r * 4 + s
@@ -38,12 +38,12 @@ end
 @testset "PokerHandEvaluator.jl Cross-Check" begin
     evaluator = HoldemEvalTables()
     rng = MersenneTwister(42)
-    deck = collect(ordered_deck())
+    deck = collect(PlayingCards.ordered_deck())
     n_trials = 20_000
 
     mismatches = 0
     for _ in 1:n_trials
-        shuffle!(rng, deck)
+        Random.shuffle!(rng, deck)
         handA = Tuple(deck[1:7])
         handB = Tuple(deck[8:14])
 
@@ -73,11 +73,11 @@ end
 # ---------------------------------------------------------------------
 function make_hands(n::Int; seed::Int=1)
     rng = MersenneTwister(seed)
-    deck = collect(ordered_deck())   
+    deck = collect(PlayingCards.ordered_deck())   
     HoldemEval_hands = Vector{NTuple{7,Int}}(undef, n)
     pc_hands     = Vector{NTuple{7,eltype(deck)}}(undef, n)
     for i in 1:n
-        shuffle!(rng, deck)
+        Random.shuffle!(rng, deck)
         h = Tuple(deck[1:7])
         pc_hands[i]     = h
         HoldemEval_hands[i] = ntuple(j -> pc_to_HoldemEval0(h[j]), 7)

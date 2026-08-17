@@ -2,11 +2,11 @@ using Test
 using Random
 using Combinatorics
 using HoldemEval
+using BenchmarkTools
 
 Random.seed!(1234)
 
-include("PHEvaluatorWrapper.jl")
-using .PHEvaluatorWrapper
+
 
 # Main test runner that executes each sub-test module
 @testset "HoldemEval.jl Suite" begin
