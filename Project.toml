@@ -12,6 +12,10 @@ PokerHandEvaluator = "18ed25b1-892a-4a3b-b8fc-1036dc9a6a89"
 
 [compat]
 julia = "1"
+BenchmarkTools = "1"
+Combinatorics = "1"
+PlayingCards = "0.4"
+PokerHandEvaluator = "0.2"
 
 [extras]
 Combinatorics = "861a8166-3701-5b0c-9a16-15d98fcdc6aa"
