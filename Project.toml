@@ -1,12 +1,13 @@
 name = "HoldemEval"
 uuid = "5a347cfc-742e-46b3-b975-78f816dd60cf"
-authors = ["Yacine Al-Najjar <yalnajja@gmail.com> and contributors"]
+authors = ["Yacine Al-Najjar <yalnajja@gmail.com> "]
 version = "1.0.0"
 
 [deps]
 Combinatorics = "861a8166-3701-5b0c-9a16-15d98fcdc6aa"
 
 [compat]
+julia = "1"
 Combinatorics = "1"
 BenchmarkTools = "1"
 PlayingCards = "0.4"
