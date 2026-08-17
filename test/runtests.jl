@@ -1,11 +1,12 @@
 using Test
 using Random
 using Combinatorics
-using HoldemEval
+
+include("../src/HoldemEval.jl")
+using .HoldemEval
 using BenchmarkTools
 
 Random.seed!(1234)
-
 
 
 # Main test runner that executes each sub-test module
