@@ -28,13 +28,10 @@ jobs:
           - 'pre'
         os:
           - ubuntu-latest
-          - macos-latest
-          - windows-latest
-        exclude:
-          - os: macos-latest
-            version: 'pre'
-          - os: windows-latest
-            version: 'pre'
+        combinatorics_version:
+          - '1.0.0'   # Minimum version you support
+          - '1.1.0'   # An intermediate version
+          - 'latest'  # Latest released version
 
     steps:
       - uses: actions/checkout@v4
