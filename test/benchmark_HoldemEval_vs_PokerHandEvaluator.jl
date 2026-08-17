@@ -5,8 +5,8 @@ using Printf
 using PlayingCards
 using PokerHandEvaluator
 
-include("../src/HoldemEval.jl")
-using .HoldemEval
+# include("../src/HoldemEval.jl")
+# using .HoldemEval
 
 # ---------------------------------------------------------------------
 # Card conversion: PlayingCards.jl <-> HoldemEval's 0-indexed card encoding
