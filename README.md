@@ -103,9 +103,38 @@ Maps the 7 sorted ranks into a dense index range `0..50387` using a precomputed 
 
 ## Verification & Correctness
 
-* **Exhaustive Evaluation**: Validated across all $\binom{52}{7} = 133,784,560$ possible 7-card hand combinations with **[Henry Lee's PHEvaluator](https://github.com/HenryRLee/PokerHandEvaluator)**.
+* **Exhaustive Evaluation**: Validated against **[Henry Lee's PHEvaluator](https://github.com/HenryRLee/PokerHandEvaluator)** across all $\binom{52}{7} = 133,784,560$ possible 7-card hand combinations (completes in ~13s). *Skipped if `PHEVALUATOR_LIB` is not set.*
+* **Pairwise Outcome Consistency**: Verified against **[PokerHandEvaluator.jl](https://github.com/charleskawczynski/PokerHandEvaluator.jl)** across random hand pairs to ensure identical relative evaluation outcomes (win/loss/tie decision consistency, rather than raw numerical rank equality).
 
-<details>
+### Running Test Suite & Verification
+
+The test suite adjusts execution based on environment variables:
+
+* **Default Run** (No environment variables set): Completely skips C++ PHEvaluator comparison. Runs a randomized 100,000-hand sampling test against `PokerHandEvaluator.jl` for pairwise evaluation consistency.
+* **`PHEVALUATOR_LIB=/path/to/libpheval.so`**: Enables C++ PHEvaluator comparison tests.
+* **`HOLDEMEVAL_EXHAUSTIVE=1`**: Replaces default random sampling with the full sweep across all 133,784,560 7-card combinations.
+
+**Fast Check (Default – `PokerHandEvaluator.jl` consistency only)**
+
+```bash
+julia --project=. test/runtests.jl
+
+```
+
+**C++ Comparison Test (Sampled)**
+
+```bash
+PHEVALUATOR_LIB=/path/to/libpheval.so julia --project=. test/runtests.jl
+
+```
+
+**Full Exhaustive Sweep (~13s)**
+
+```bash
+HOLDEMEVAL_EXHAUSTIVE=1 PHEVALUATOR_LIB=/path/to/libpheval.so julia --project=. test/runtests.jl
+
+```
+### <details>
 <summary><b>Building <code>libpheval</code> for local test verification</b></summary>
 
 ### Compiling `libpheval` (C++ Shared Library)
@@ -128,9 +157,9 @@ cmake --build . --target pheval
 ```
 </details>
 
-* **Consistency**: Verified against  **[PokerHandEvaluator.jl](https://github.com/charleskawczynski/PokerHandEvaluator.jl)** for complete hand rank equivalence across random paired hands.
+```
 
----
+
 
 ## Acknowledgments
 
