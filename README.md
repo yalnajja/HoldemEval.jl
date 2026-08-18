@@ -104,6 +104,30 @@ Maps the 7 sorted ranks into a dense index range `0..50387` using a precomputed 
 ## Verification & Correctness
 
 * **Exhaustive Evaluation**: Validated across all $\binom{52}{7} = 133,784,560$ possible 7-card hand combinations with **[Henry Lee's PHEvaluator](https://github.com/HenryRLee/PokerHandEvaluator)**.
+
+<details>
+<summary><b>Building <code>libpheval</code> for local test verification</b></summary>
+
+### Compiling `libpheval` (C++ Shared Library)
+
+#### Prerequisites
+* **Git**, **CMake** (3.10+), and a **C++11** compiler.
+
+#### Steps
+```bash
+git clone [https://github.com/HenryRLee/PokerHandEvaluator.git](https://github.com/HenryRLee/PokerHandEvaluator.git)
+cd PokerHandEvaluator/cpp
+
+# Patch CMakeLists.txt to build a shared library
+sed -i 's/ STATIC / SHARED /g' CMakeLists.txt  # macOS: sed -i '' 's/ STATIC / SHARED /g' CMakeLists.txt
+
+# Build core target only
+mkdir build && cd build
+cmake -DBUILD_TESTS=OFF -DBUILD_EXAMPLES=OFF ..
+cmake --build . --target pheval
+```
+</details>
+
 * **Consistency**: Verified against  **[PokerHandEvaluator.jl](https://github.com/charleskawczynski/PokerHandEvaluator.jl)** for complete hand rank equivalence across random paired hands.
 
 ---
