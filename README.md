@@ -103,7 +103,7 @@ Maps the 7 sorted ranks into a dense index range `0..50387` using a precomputed 
 
 ## Verification & Correctness
 
-**Core Unit Test Suite (`test/test_core.jl`)**
+* **Core Unit Test Suite (`test/test_core.jl`)**
 Validates lookup table generation, bitwise flush detection, card-sorting networks, and hand rank invariants without external dependencies. Compares fast table lookups against an independent 21-combination brute-force reference (configurable via `HoldemEval_FAST_TESTS=true` to toggle between 150 and 2,000 random hands).
 
 * **Exhaustive Evaluation**: Validated against **[Henry Lee's PHEvaluator](https://github.com/HenryRLee/PokerHandEvaluator)** across all $\binom{52}{7} = 133,784,560$ possible 7-card hand combinations (completes in ~13s). *Skipped if `PHEVALUATOR_LIB` is not set.*
