@@ -110,7 +110,7 @@ Maps the 7 sorted ranks into a dense index range `0..50387` using a precomputed 
 
 The test suite adjusts execution based on environment variables:
 
-* **Default Run** (No environment variables set): Completely skips C++ PHEvaluator comparison. Runs a randomized 100,000-hand sampling test against `PokerHandEvaluator.jl` for pairwise evaluation consistency.
+* **Default Run** (No environment variables set): Completely skips C++ PHEvaluator comparison. Runs a randomized 20,000-hand sampling test against `PokerHandEvaluator.jl` for pairwise evaluation consistency.
 * **`PHEVALUATOR_LIB=/path/to/libpheval.so`**: Enables C++ PHEvaluator comparison tests.
 * **`HOLDEMEVAL_EXHAUSTIVE=1`**: Replaces default random sampling with the full sweep across all 133,784,560 7-card combinations.
 
@@ -134,7 +134,7 @@ PHEVALUATOR_LIB=/path/to/libpheval.so julia --project=. test/runtests.jl
 HOLDEMEVAL_EXHAUSTIVE=1 PHEVALUATOR_LIB=/path/to/libpheval.so julia --project=. test/runtests.jl
 
 ```
-### <details>
+<details>
 <summary><b>Building <code>libpheval</code> for local test verification</b></summary>
 
 ### Compiling `libpheval` (C++ Shared Library)
