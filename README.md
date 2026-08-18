@@ -103,6 +103,9 @@ Maps the 7 sorted ranks into a dense index range `0..50387` using a precomputed 
 
 ## Verification & Correctness
 
+**Core Unit Test Suite (`test/test_core.jl`)**
+Validates lookup table generation, bitwise flush detection, card-sorting networks, and hand rank invariants without external dependencies. Compares fast table lookups against an independent 21-combination brute-force reference (configurable via `HoldemEval_FAST_TESTS=true` to toggle between 150 and 2,000 random hands).
+
 * **Exhaustive Evaluation**: Validated against **[Henry Lee's PHEvaluator](https://github.com/HenryRLee/PokerHandEvaluator)** across all $\binom{52}{7} = 133,784,560$ possible 7-card hand combinations (completes in ~13s). *Skipped if `PHEVALUATOR_LIB` is not set.*
 * **Pairwise Outcome Consistency**: Verified against **[PokerHandEvaluator.jl](https://github.com/charleskawczynski/PokerHandEvaluator.jl)** across random hand pairs to ensure identical relative evaluation outcomes (win/loss/tie decision consistency, rather than raw numerical rank equality).
 
@@ -110,7 +113,7 @@ Maps the 7 sorted ranks into a dense index range `0..50387` using a precomputed 
 
 The test suite adjusts execution based on environment variables:
 
-* **Default Run** (No environment variables set): Completely skips C++ PHEvaluator comparison. Runs a randomized 20,000-hand sampling test against `PokerHandEvaluator.jl` for pairwise evaluation consistency.
+* **Default Run** (No environment variables set): Completely skips C++ PHEvaluator comparison. Runs a randomized 20,000-hand sampling test against `PokerHandEvaluator.jl` for pairwise evaluation consistency and the core unit test suite .
 * **`PHEVALUATOR_LIB=/path/to/libpheval.so`**: Enables C++ PHEvaluator comparison tests.
 * **`HOLDEMEVAL_EXHAUSTIVE=1`**: Replaces default random sampling with the full sweep across all 133,784,560 7-card combinations.
 
