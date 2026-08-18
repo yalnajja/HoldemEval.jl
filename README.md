@@ -157,7 +157,7 @@ cmake --build . --target pheval
 ```
 </details>
 
-```
+
 
 
 
@@ -165,4 +165,4 @@ cmake --build . --target pheval
 
 * **[Henry Lee's PHEvaluator](https://github.com/HenryRLee/PokerHandEvaluator)**: Algorithm design, 50,388 non-flush multiset DP table indexing ($\binom{19}{7}$), and the 8,192 flush bitmask table architecture are directly based on the core mechanics introduced in `PHEvaluator`.
 * **Milton Green (1969)**: Creator of the optimal 16-comparator sorting network used in `sort7`.
-* **AI Collaboration**: Designed, implemented, and benchmarked with assistance from **Gemini** and **Claude AI**.
+* **AI Tools**: Designed, implemented, debugged and benchmarked with assistance from **Gemini** and **Claude AI**.
