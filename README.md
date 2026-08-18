@@ -151,7 +151,7 @@ git clone https://github.com/HenryRLee/PokerHandEvaluator.git
 cd PokerHandEvaluator/cpp
 
 # Patch CMakeLists.txt to build a shared library (replace STATIC by SHARED in CMakeLists.txt)
-sed -i 's/\bSTATIC\b/SHARED/g' CMakeLists.txt # macOS: sed -i '' 's/ STATIC / SHARED /g' CMakeLists.txt
+sed -i 's/\bSTATIC\b/SHARED/g' CMakeLists.txt
 
 # Build core target only
 mkdir build && cd build
