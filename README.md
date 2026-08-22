@@ -1,14 +1,14 @@
 # HoldemEval.jl
 
-**HoldemEval.jl** is an ultra-fast, zero-allocation 7-card Texas Hold'em hand evaluator written in pure Julia. By combining a bit-parallel flush detector, Milton Green's 16-comparator optimal sorting network, dynamic programming combination indexing, and a tiny memory footprint (~117 KB), `HoldemEval.jl` evaluates over **116 million hands per second** on a single thread.
+**HoldemEval.jl** is an fast, zero-allocation 7-card Texas Hold'em hand evaluator written in pure Julia. By combining a bit-parallel flush detector, Milton Green's 16-comparator optimal sorting network, dynamic programming combination indexing, and a tiny memory footprint (~117 KB), `HoldemEval.jl` evaluates over **116 million hands per second** on a single thread.
 
 ---
 
 ## Key Features
 
-* **Blazing Fast**: Evaluates 7-card hands in **~8.3 – 8.6 ns** per hand (~116M hands/sec).
+* **Fast**: Evaluates 7-card hands in **~8.3 – 8.6 ns** per hand (~116M hands/sec).
 * **Zero Allocations**: $0$ bytes allocated per evaluation call (`evaluate7` / `evaluate7_oneIndexed_reversed`).
-* **Ultra-Compact Lookup Tables**: Total table size is under **117 KB** (~16 KB flush table + ~100.8 KB rank table), fitting entirely inside CPU L1 cache.
+* **Compact Lookup Tables**: Total table size is under **117 KB** (~16 KB flush table + ~100.8 KB rank table), fitting entirely inside CPU L1/L2 cache.
 * **100% Validated**: Verified across all $\binom{52}{7} = 133,784,560$ unique 7-card poker hands.
 * **Pure Julia**: No C/C++ dependencies, custom compilation steps, or `ccall` overhead.
 
@@ -17,8 +17,7 @@
 ## Installation
 
 ```julia
-using Pkg
-Pkg.add(url="https://github.com/yalnajja/HoldemEval.jl")
+import Pkg; Pkg.add("HoldemEval")
 
 ```
 
@@ -78,7 +77,7 @@ Compared against Henry Lee's optimized C++ `PHEvaluator` library via a Julia `cc
 * **Bulk Throughput (10,000 Random Hands)**:
 * `HoldemEval.jl`: **116,590,882 hands/sec** (8.58 ns/hand)
 * `PHEvaluator` (C++ `ccall`): **54,994,308 hands/sec** (18.18 ns/hand)
-* **Result**: `HoldemEval.jl` runs **2.12x faster** than calling the optimized C++ library across Julia's native `ccall` boundary due to complete function inlining.
+* **Result**: `HoldemEval.jl` runs **2.12x faster** than calling the optimized C++ library across Julia's native `ccall` boundary.
 
 
 
