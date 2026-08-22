@@ -6,7 +6,7 @@
 
 ## Key Features
 
-* **Fast**: Evaluates 7-card hands in **~8.3 – 8.6 ns** per hand (~116M hands/sec).
+* **Fast**: Evaluates 7-card hands in **~8.3 – 8.6 ns** per hand (~116M hands/sec). (My CPU:11th Gen Intel(R) Core(TM) i7-1165G7 @ 2.80GHz)
 * **Zero Allocations**: $0$ bytes allocated per evaluation call (`evaluate7` / `evaluate7_oneIndexed_reversed`).
 * **Compact Lookup Tables**: Total table size is under **117 KB** (~16 KB flush table + ~100.8 KB rank table), fitting entirely inside CPU L1/L2 cache.
 * **100% Validated**: Verified across all $\binom{52}{7} = 133,784,560$ unique 7-card poker hands.
